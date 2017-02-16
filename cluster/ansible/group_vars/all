@@ -21,7 +21,8 @@ RESTART_ON_CHANGE: true
 
 # This setting affects the fqdns that your hosts will get on the internal network that Vagrant creates.
 # Hostnames will be master-[1..x].CLUSTER_DOMAIN  and worker-[1..y].CLUSTER_DOMAIN
-CLUSTER_DOMAIN: hbase.book
+#CLUSTER_DOMAIN: hbase.book
+CLUSTER_DOMAIN: ec2.internal
 
 # The versions of software that will be installed by the playbooks
 HADOOP_VERSION: 2.7.3
@@ -59,8 +60,10 @@ SSL_SERVICES:
   - { owner: 'hbase', path: 'hbase' }
   - { owner: 'zookeeper', path: 'zookeeper' }
 
-KRB_REALM: "{{ CLUSTER_DOMAIN | upper }}"
-KRB_SERVER: master-1.hbase.book
+#KRB_REALM: "{{ CLUSTER_DOMAIN | upper }}"
+KRB_REALM: "HBASE.BOOK"
+
+KRB_SERVER: ip-172-31-24-55.ec2.internal
 KRB_PRINCIPALS: [ 'hdfs', 'HTTP', 'yarn', 'hbase', 'zookeeper' ]
 KRB_SERVICES_WITH_HTTP: [ 'hdfs', 'yarn', 'hbase', 'zookeeper' ]
 

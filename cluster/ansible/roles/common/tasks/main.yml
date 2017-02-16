@@ -114,3 +114,7 @@
 - user: name={{ item }} group=hadoop createhome=no shell=/bin/false state=present
   with_items:
     - "{{ OS_USERS }}"
+
+- name: Create admin user account & group
+  group: name=hadoopadmin state=present
+- user: name=larsgeorge group=hadoopadmin createhome=no shell=/bin/false state=present
